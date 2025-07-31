@@ -11,6 +11,7 @@ const StyledBadge = styled.div<{ $variant?: string }>`
   font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
   transition: ${({ theme }) => theme.transitions.fast};
   border: 1px solid transparent;
+  margin-top: 5px;
   
   ${({ $variant, theme }) => {
     switch ($variant) {

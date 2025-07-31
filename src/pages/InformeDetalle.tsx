@@ -795,7 +795,7 @@ const InformeDetalle = () => {
                       alt={informe.interpretacion.alt}
                       style={{
                         width: "100%",
-                        maxHeight: "350px",
+                        maxHeight: "850px",
                         objectFit: "cover",
                         borderBottom: "1px solid #e2e8f0",
                       }}

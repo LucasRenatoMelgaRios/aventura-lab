@@ -9,8 +9,8 @@ export interface ImagenSeccion {
 
 export interface Material {
   nombre: string;
-  imagen: string;
-  descripcion: string;
+  imagen?: string;
+  descripcion?: string;
 }
 
 export interface Procedimiento {
@@ -546,47 +546,441 @@ RECOMENDACIONES:
   },
   "anatomia-patologica": {
     1: {
-      titulo: "Biopsia de Piel - Carcinoma Basocelular",
-      descripcion: "Análisis histopatológico de lesión cutánea pigmentada",
-      fecha: "2024-01-18",
-      estudiante: "Roberto Silva",
+      titulo: "Examen Microscópico de Células - Orina y Esputo",
+      descripcion:
+        "Análisis citológico de muestras de orina y esputo para detección de anomalías celulares",
+      fecha: "2024-03-15",
+      estudiante: "Ana Lucía Fernández",
       estado: "Completado",
-      tipo: "Biopsia",
-      introduccion:
-        "La biopsia cutánea es un procedimiento diagnóstico fundamental en dermatopatología que permite el análisis histológico de lesiones sospechosas para establecer un diagnóstico definitivo.",
-      objetivoGeneral:
-        "Realizar el análisis histopatológico completo de una lesión cutánea para establecer el diagnóstico diferencial.",
+      tipo: "Citología",
+      introduccion: {
+        texto:
+          "El examen microscópico de células en muestras de orina y esputo constituye una herramienta diagnóstica fundamental en el laboratorio de citopatología. Estas muestras, obtenidas de forma no invasiva, permiten evaluar cambios morfológicos en células exfoliadas del tracto urinario y respiratorio. La citología urinaria es especialmente valiosa en el seguimiento de pacientes con antecedentes de carcinoma urotelial, mientras que la citología de esputo mantiene su relevancia en el screening de neoplasias pulmonares.\n\nLa recolección adecuada de las muestras es crítica para la calidad del diagnóstico. En orina se prefieren muestras de primera micción matutina o recolecciones seriadas, mientras que el esputo debe obtenerse por expectoración profunda tras lavado bronquial. Ambas muestras requieren procesamiento rápido para evitar lisis celular y preservar la morfología, siendo la fijación en alcohol de 50-70% el método más utilizado para preparaciones en líquido.\n\nEl análisis combinado de estas muestras aumenta la sensibilidad diagnóstica, particularmente en casos de neoplasias metastásicas o enfermedades sistémicas que afectan múltiples sistemas. La correlación clínico-citológica es esencial para una interpretación precisa, considerando factores como infecciones, tratamientos previos y condiciones no neoplásicas que pueden simular malignidad.",
+        imagen: "/examen-celulas/citologia-intro.avif",
+        alt: "Preparación de muestras de orina y esputo para análisis citológico",
+      },
+      objetivoGeneral: {
+        texto:
+          "Realizar el análisis citomorfológico comparativo de células en muestras de orina y esputo para identificar alteraciones sugestivas de patología.",
+        imagen: "/examen-celulas/objetivo-citologia.jpg",
+        alt: "Microscopio y preparaciones celulares para análisis comparativo",
+      },
       objetivosEspecificos: [
-        "Procesar adecuadamente la muestra de biopsia cutánea",
-        "Realizar técnicas de tinción histológica estándar",
-        "Identificar características histopatológicas específicas",
-        "Establecer el diagnóstico histopatológico definitivo",
+        "Preparar adecuadamente extensiones celulares de ambas muestras",
+        "Aplicar técnicas de tinción de Papanicolaou y Wright-Giemsa",
+        "Identificar características citológicas normales y patológicas",
+        "Diferenciar artefactos de cambios patológicos genuinos",
+        "Clasificar hallazgos según el sistema Bethesda (orina) y sistema de París (esputo)",
       ],
-      fundamentoTeorico:
-        "El carcinoma basocelular es el cáncer de piel más frecuente, originado en las células basales de la epidermis. Histológicamente se caracteriza por nidos de células basófilas con núcleos hipercromáticos y citoplasma escaso, rodeados de un estroma fibroso característico.",
+      fundamentoTeorico: {
+        texto:
+          "La citología de orina evalúa principalmente células uroteliales, escamosas y de transición, cuyo aspecto varía según el método de recolección (espontánea, lavado o cepillado). Las células uroteliales normales presentan relación núcleo-citoplasma baja (<0.5), cromatina fina y bordes celulares definidos. En contraste, las células malignas muestran aumento de tamaño nuclear, hipercromasia, membrana nuclear irregular y pérdida de polaridad. El esputo contiene principalmente macrófagos alveolares (células espumosas con pigmento antracótico), células ciliadas bronquiales y ocasionalmente células escamosas orofaríngeas.\n\nLos criterios diagnósticos se basan en la atipia celular cuantificada mediante sistemas estandarizados. En orina, el sistema Bethesda diferencia entre atipia de significado incierto (AUC), neoplasia urotelial de bajo potencial maligno (LGUN) y carcinoma de alto grado (HGUC). Para esputo, el sistema de París clasifica las muestras como negativas, atípicas, sospechosas o positivas para malignidad, considerando la presencia de cuerpos de cromatina intranucleares y agrupaciones tridimensionales como marcadores de adenocarcinoma.",
+        imagen: "/examen-celulas/fundamento-citologia.jpeg",
+        alt: "Comparación de células normales y patológicas en orina y esputo",
+      },
       materiales: [
-        "Micrótomo",
-        "Bloques de parafina",
-        "Portaobjetos",
-        "Hematoxilina de Harris",
-        "Eosina",
-        "Alcohol etílico",
-        "Xilol",
-        "Medio de montaje",
-        "Microscopio óptico",
+        {
+          nombre: "Portaobjetos con cubreobjetos",
+          imagen: "/examen-celulas/materiales/portaobjetos.webp",
+          descripcion: "Vidrio óptico de 1 mm de grosor para preparaciones",
+        },
+        {
+          nombre: "Citocentrífuga",
+          imagen: "/examen-celulas/materiales/citocentrifuga.jpeg",
+          descripcion: "Equipo para concentrar células en monocapa",
+        },
+        {
+          nombre: "Kit de tinción Papanicolaou",
+          imagen: "/examen-celulas/materiales/tincion-pap.jpg",
+          descripcion: "Incluye hematoxilina, OG-6 y EA-50",
+        },
+        {
+          nombre: "Filtros de membrana",
+          imagen: "/examen-celulas/materiales/filtros-membrana.avif",
+          descripcion: "Para procesamiento de muestras líquidas (0.45 μm)",
+        },
+        {
+          nombre: "Reactivo mucolítico (DTT)",
+          imagen: "/examen-celulas/materiales/dtt-reactivo.jpg",
+          descripcion: "Dithiothreitol 0.1% para digestión de moco",
+        },
+        {
+          nombre: "Microscopio con cámara digital",
+          imagen: "/examen-celulas/materiales/microscopio-digital.jpg",
+          descripcion: "Con objetivos de 10x, 40x y 100x (inmersión)",
+        },
       ],
-      procedimiento: [
-        "Cortar secciones de 4-5 μm del bloque de parafina",
-        "Montar las secciones en portaobjetos",
-        "Desparafinar en xilol",
-        "Rehidratar en alcoholes decrecientes",
-        "Teñir con hematoxilina por 5 minutos",
-        "Lavar y diferenciar con alcohol ácido",
-        "Contrastar con eosina por 2 minutos",
-        "Deshidratar y aclarar",
-        "Montar con medio permanente",
-        "Examinar al microscopio y diagnosticar",
+      procedimiento: {
+        texto: [
+          "Homogeneizar la muestra de esputo con solución salina y DTT al 0.1%",
+          "Centrifugar orina a 1500 rpm por 10 minutos",
+          "Preparar extensiones en capa fina usando citocentrífuga",
+          "Fijar inmediatamente con alcohol-éter (1:1) por 15 minutos",
+          "Teñir con Papanicolaou (núcleos) y contracolorar con Wright-Giemsa (citoplasma)",
+          "Montar con resina sintética y cubreobjetos",
+          "Examinar sistemáticamente a 10x y 40x",
+          "Identificar mínimo 50 células epiteliales por muestra para evaluación estadística",
+          "Documentar hallazgos con fotomicrografías a 100x (inmersión)",
+          "Emitir informe citopatológico estandarizado",
+        ],
+        imagenes: [
+          "/examen-celulas/procedimiento/homogeneizacion-esputo.jpg",
+          "/examen-celulas/procedimiento/centrifugacion-orina.jpg",
+          "/examen-celulas/procedimiento/preparacion-extensiones.png",
+          "/examen-celulas/procedimiento/fijacion-alcohol-eter.gif",
+          "/examen-celulas/procedimiento/tincion-papanicolaou.png",
+          "/examen-celulas/procedimiento/montaje-muestras.jpg",
+          "/examen-celulas/procedimiento/analisis-microscopico.png",
+          "/examen-celulas/procedimiento/recuento-celulas.avif",
+          "/examen-celulas/procedimiento/fotomicrografia.jpeg",
+          "/examen-celulas/procedimiento/informe-citologico.png",
+        ],
+      },
+      interpretacion: {
+        texto: `INTERPRETACIÓN CITOLÓGICA - ORINA Y ESPUTO
+
+CRITERIOS DIAGNÓSTICOS (ORINA):
+• Normal: Células uroteliales uniformes (20-30 μm), relación N:C <0.5
+• AUC: Aumento nuclear leve (2-3x), cromatina ligeramente gruesa
+• LGUN: Proliferación papilar, núcleos agrandados (4-5x), membrana intacta
+• HGUC: Pleomorfismo marcado, cromatina gruesa, relación N:C >0.8
+
+CRITERIOS DIAGNÓSTICOS (ESPUTO):
+• Negativo: Macrófagos alveolares predominantes, células ciliadas intactas
+• Atípico: Pérdida de cilios, aumento nuclear sin otros criterios de malignidad
+• Sospechoso: Agrupaciones tridimensionales, nucléolos prominentes
+• Positivo: Células con mitosis atípicas, relación N:C invertida
+
+HALLAZGOS RELEVANTES:
+• Células en "anillo de sello" (adenocarcinoma gástrico metastásico)
+• Inclusiones virales (CMV, HSV) en pacientes inmunocomprometidos
+• Cristales de Charcot-Leyden (enfermedades alérgicas/asmáticas)
+• Células decoy (Carcinoma de células escamosas)`,
+        imagen: "/examen-celulas/interpretacion-citologia.gif",
+        alt: "Tabla comparativa de criterios diagnósticos para diversas muestras",
+      },
+      erroresComunes: {
+        texto: `ERRORES FRECUENTES Y CONTROL DE CALIDAD
+
+PROBLEMAS PREANALÍTICOS:
+1. Muestra de orina:
+   • Error: Retraso >1h en procesamiento
+   • Solución: Usar medio de transporte con fijador
+
+2. Muestra de esputo:
+   • Error: Saliva en lugar de esputo verdadero
+   • Solución: Verificar presencia de macrófagos alveolares
+
+ARTEFACTOS TÉCNICOS:
+• Sobretinción nuclear: Reducir tiempo en hematoxilina
+• Pérdida celular: Optimizar velocidad de centrifugación
+• Secado al aire: Fijar inmediatamente post-extensión
+
+CONTROLES RECOMENDADOS:
+• Incluir muestra control positiva (paciente conocido)
+• Participar en programas de intercomparación
+• Revisión por segundo citólogo en casos dudosos
+• Documentar según guías ASC (American Society of Cytopathology)`,
+        imagen: "/examen-celulas/errores-citologia.jpeg",
+        alt: "Ejemplos de artefactos técnicos en citología",
+      },
+    },
+    2: {
+      titulo: "Prueba de Papanicolaou - Citología Cervicovaginal",
+      descripcion:
+        "Estudio citológico para detección temprana de lesiones precancerosas y cáncer cervicouterino",
+      fecha: "2024-04-10",
+      estudiante: "Valeria Mendoza",
+      estado: "Completado",
+      tipo: "Citología",
+      introduccion: {
+        texto:
+          "La prueba de Papanicolaou es un método de screening esencial en ginecología preventiva, desarrollado por el Dr. George Papanicolaou en 1943. Esta técnica permite la identificación temprana de alteraciones celulares en el epitelio cervical, proporcionando una herramienta clave para la prevención del cáncer cervicouterino. Su implementación rutinaria ha reducido la mortalidad por este cáncer en más del 70% en las últimas décadas.\n\nLa muestra se obtiene mediante cepillado exocervical (espátula de Ayre) y endocervical (cepillo cytobrush), recolectando células de la zona de transformación. El procesamiento adecuado incluye fijación inmediata con alcohol etílico al 96% para preservar la morfología celular. Las muestras pueden procesarse mediante técnica convencional (extensión directa en lámina) o en medio líquido (ThinPrep o SurePath), este último con ventajas en reducción de artefactos.\n\nLa interpretación sigue los criterios del Sistema Bethesda 2014, que clasifica los hallazgos en negativos para lesión intraepitelial o malignidad (NILM), anomalías de células escamosas (ASC-US, ASC-H, LSIL, HSIL) y anomalías de células glandulares (AGC). La correlación con pruebas de VPH de alto riesgo es fundamental para el manejo clínico de los resultados anormales.",
+        imagen: "/papanicolaou/pap-intro.jpg",
+        alt: "Obtención de muestra cervicovaginal para prueba de Papanicolaou",
+      },
+      objetivoGeneral: {
+        texto:
+          "Detectar alteraciones citomorfológicas en células cervicovaginales mediante tinción de Papanicolaou para diagnóstico precoz de neoplasias intraepiteliales.",
+        imagen: "/papanicolaou/pap-objetivo.avif",
+        alt: "Microscopio mostrando células cervicales teñidas con Pap",
+      },
+      objetivosEspecificos: [
+        "Recolectar adecuadamente muestra de zona de transformación",
+        "Preparar láminas con técnica convencional o en medio líquido",
+        "Aplicar protocolo de tinción de Papanicolaou estandarizado",
+        "Identificar cambios celulares según criterios Bethesda",
+        "Clasificar hallazgos para guiar conducta clínica",
       ],
+      fundamentoTeorico: {
+        texto:
+          "La tinción de Papanicolaou es una técnica policromática que utiliza hematoxilina (núcleos), Orange G (queratina) y EA (citoplasma). La hematoxilina tiñe los ácidos nucleicos (azul), el Orange G las células queratinizadas (naranja) y el EA50 los componentes citoplasmáticos (verde/rosa). Esta combinación permite diferenciar células escamosas superficiales, intermedias, parabásales y endocervicales, así como identificar atipias nucleares características de infección por VPH o displasia.\n\nEl fundamento biológico se basa en que las lesiones precancerosas muestran alteraciones nucleares progresivas: aumento de relación núcleo-citoplasma, hipercromasia, irregularidad de membrana nuclear y pérdida de polaridad. Las células escamosas atípicas de significado indeterminado (ASC-US) representan el hallazgo más frecuente (3-5% de los casos), mientras que las lesiones intraepiteliales escamosas de alto grado (HSIL) son las más relevantes por su potencial evolutivo a carcinoma invasor.",
+        imagen: "/papanicolaou/pap-fundamento.webp",
+        alt: "Esquema comparativo de células normales y patológicas en Papanicolaou",
+      },
+      materiales: [
+        {
+          nombre: "Espátula de Ayre",
+          imagen: "/papanicolaou/materiales/espátula-ayre.jpeg",
+          descripcion: "Para recolección de células exocervicales",
+        },
+        {
+          nombre: "Cepillo endocervical",
+          imagen: "/papanicolaou/materiales/cytobrush.jpeg",
+          descripcion: "Recoge células del canal cervical",
+        },
+        {
+          nombre: "Kit de tinción Pap",
+          imagen: "/examen-celulas/materiales/tincion-pap.jpg",
+          descripcion: "Incluye hematoxilina, OG-6 y EA-50",
+        },
+        {
+          nombre: "Fijador en spray",
+          imagen: "/papanicolaou/materiales/fijador-spray.jpeg",
+          descripcion: "Alcohol polivinílico para fijación inmediata",
+        },
+        {
+          nombre: "Medio líquido ThinPrep",
+          imagen: "/papanicolaou/materiales/thinprep.jpeg",
+          descripcion: "Para procesamiento automatizado",
+        },
+        {
+          nombre: "Microscopio con contraste",
+          imagen: "/examen-celulas/materiales/microscopio-digital.jpg",
+          descripcion: "Con objetivos 10x, 40x y 100x aceite",
+        },
+      ],
+      procedimiento: {
+        texto: [
+          "Realizar toma con espátula de Ayre (rotación 360°) y cytobrush",
+          "Extender muestra inmediatamente en lámina portaobjetos",
+          "Fijar con spray alcohol-polivinílico dentro de los 5 segundos",
+          "Teñir con hematoxilina de Harris (5 minutos)",
+          "Diferenciar en alcohol-ácido (2-3 inmersiones)",
+          "Contratinción con Orange G (1 minuto) y EA50 (3 minutos)",
+          "Deshidratar en alcoholes crecientes y xilol",
+          "Montar con resina sintética y cubreobjetos",
+          "Leer sistemáticamente (método de zigzag)",
+          "Reportar según sistema Bethesda 2014",
+        ],
+        imagenes: [
+          "/papanicolaou/procedimiento/toma-muestra.jpg",
+          "/papanicolaou/procedimiento/extension-lamina.png",
+          "/papanicolaou/procedimiento/fijacion-spray.gif",
+          "/papanicolaou/procedimiento/tincion-hematoxilina.webp",
+          "/papanicolaou/procedimiento/diferenciacion-alcohol-acido.png",
+          "/papanicolaou/procedimiento/tincion-pap.avif",
+          "/papanicolaou/procedimiento/deshidratacion.jpg",
+          "/papanicolaou/procedimiento/montaje-lamina.jpg",
+          "/papanicolaou/procedimiento/lectura-microscopio.png",
+          "/papanicolaou/procedimiento/reporte-bethesda.webp",
+        ],
+      },
+      interpretacion: {
+        texto: `CRITERIOS DIAGNÓSTICOS (SISTEMA BETHESDA 2014)
+
+CATEGORÍAS PRINCIPALES:
+1. Negativo para lesión intraepitelial o malignidad (NILM):
+   - Flora vaginal normal
+   - Cambios reactivos por inflamación
+   - Atrofia en postmenopáusicas
+
+2. Anomalías células escamosas:
+   - ASC-US: Atipia en células escamosas de significado indeterminado
+   - ASC-H: Atipia sugestiva de HSIL
+   - LSIL: Lesión intraepitelial de bajo grado (VPH/leve displasia)
+   - HSIL: Lesión intraepitelial de alto grado (displasia moderada/severa)
+   - Carcinoma escamoso invasor
+
+3. Anomalías células glandulares:
+   - AGC: Células glandulares atípicas
+   - AIS: Adenocarcinoma in situ
+
+HALLAZGOS ASOCIADOS:
+• Coilocitos (VPH de alto riesgo)
+• Cambios por herpes simplex
+• Actinomyces en DIU
+• Trichomonas vaginalis`,
+        imagen: "/papanicolaou/pap-interpretacion.jpg",
+        alt: "Tabla de criterios Bethesda con ejemplos celulares",
+      },
+      erroresComunes: {
+        texto: `CONTROL DE CALIDAD EN PAPANICOLAOU
+
+ERRORES PREANALÍTICOS:
+• Muestra insuficiente (<5.000 células escamosas)
+• Secado al aire (artefactos por retraso en fijación)
+• Contaminación con lubricante vaginal
+
+PROBLEMAS DE TINCIÓN:
+• Sobretinción nuclear (exceso hematoxilina)
+• Subtinción citoplasmática (EA insuficiente)
+• Precipitados de tinción (filtrado inadecuado)
+
+CRITERIOS DE REJECTACIÓN:
+• Lámina rota no reparable
+• Identificación incorrecta
+• Muestra sin fijar (>24 horas)
+
+RECOMENDACIONES:
+• Certificación CAP (College of American Pathologists)
+• Doble lectura en casos ASC-US/HSIL
+• Correlación con colposcopia e histología`,
+        imagen: "/papanicolaou/pap-errores.jpg",
+        alt: "Ejemplos de errores técnicos en láminas de Pap",
+      },
+    },
+    3: {
+      titulo:
+        "Tinción de Hematoxilina y Eosina (H&E) - Procesamiento Histológico",
+      descripcion:
+        "Técnica de tinción estándar para evaluación morfológica de tejidos en diagnóstico histopatológico",
+      fecha: "2024-05-15",
+      estudiante: "Carlos Andrés Ramírez",
+      estado: "Completado",
+      tipo: "Histología",
+      introduccion: {
+        texto:
+          "La tinción de Hematoxilina y Eosina (H&E) es el método fundamental en histopatología, utilizado rutinariamente en el diagnóstico de biopsias y piezas quirúrgicas. Desarrollada en el siglo XIX, esta técnica permite la visualización de la estructura tisular general mediante la diferenciación de núcleos (hematoxilina) y citoplasmas (eosina). Su estandarización ha sido clave para el avance del diagnóstico anatomopatológico moderno.\n\nLa hematoxilina, un colorante natural extraído del árbol Haematoxylum campechianum, tiene afinidad por los componentes ácidos de las células (principalmente ADN nuclear), mientras que la eosina, un colorante sintético, tiñe componentes básicos como proteínas citoplasmáticas y fibras colágenas. Esta combinación proporciona un contraste óptimo para evaluar arquitectura tisular, relación núcleo-citoplasma y características nucleares.\n\nEn la práctica diagnóstica, la H&E sirve como punto de partida para el análisis histológico, permitiendo identificar patrones de enfermedad que pueden requerir posteriormente técnicas especiales (inmunohistoquímica, tinciones histoquímicas). Su calidad depende críticamente del procesamiento previo del tejido (fijación, inclusión en parafina, corte) y del protocolo de tinción empleado.",
+        imagen: "/h-e/histologia-intro.jpg",
+        alt: "Tinción H&E mostrando contraste nuclear-citoplasmático",
+      },
+      objetivoGeneral: {
+        texto:
+          "Realizar tinción H&E de calidad diagnóstica para evaluación morfológica de tejidos en cortes histológicos.",
+        imagen: "/h-e/objetivo-h-e.avif",
+        alt: "Blocos de parafina y láminas teñidas con H&E",
+      },
+      objetivosEspecificos: [
+        "Preparar soluciones de hematoxilina y eosina según protocolo",
+        "Optimizar tiempos de tinción para diferentes tipos tisulares",
+        "Diferenciar adecuadamente la hematoxilina",
+        "Lograr contraste óptimo núcleo-citoplasma",
+        "Identificar y corregir artefactos de tinción",
+      ],
+      fundamentoTeorico: {
+        texto:
+          "La hematoxilina oxidada (hemateína) forma complejos con iones metálicos (generalmente aluminio en la hematoxilina de Harris) que se unen a grupos fosfato del ADN nuclear, tiñendo los núcleos de azul-púrpura. La eosina Y, un colorante xanténico, interactúa con grupos amino básicos de proteínas citoplasmáticas mediante enlaces iónicos, produciendo una coloración rosa-anaranjada. La selectividad se logra mediante pasos de diferenciación (eliminación de exceso de colorante) y azulización (ajuste del pH para estabilizar la tinción nuclear).\n\nExisten múltiples variantes de hematoxilina (Harris, Mayer, Gill) que difieren en su composición química y propiedades tintoriales. La hematoxilina de Harris, que contiene iones de aluminio como mordiente, es la más utilizada en laboratorios de diagnóstico por su intensidad y rapidez de tinción. La eosina puede usarse en concentraciones del 0.5-1% en solución acuosa o alcohólica, siendo esta última más estable pero con menor penetración en el tejido.",
+        imagen: "/h-e/fundamento-h-e.png",
+        alt: "Esquema molecular de la interacción colorante-tejido en H&E",
+      },
+      materiales: [
+        {
+          nombre: "Hematoxilina de Harris",
+          imagen: "/h-e/materiales/hematoxilina-harris.jpeg",
+          descripcion: "Solución lista para usar con alumbre como mordiente",
+        },
+        {
+          nombre: "Eosina Y alcohólica",
+          imagen: "/h-e/materiales/eosina.jpg",
+          descripcion: "Solución al 0.5% en alcohol etílico 70°",
+        },
+        {
+          nombre: "Ácido clorhídrico/alcohol",
+          imagen: "/h-e/materiales/diferenciador.jpeg",
+          descripcion: "Solución al 1% para diferenciación nuclear",
+        },
+        {
+          nombre: "Baño de azulización",
+          imagen: "/h-e/materiales/azulizador.jpeg",
+          descripcion: "Agua corriente o solución de Scott",
+        },
+        {
+          nombre: "Estación de tinción automatizada",
+          imagen: "/h-e/materiales/estacion-tincion.png",
+          descripcion: "Para procesamiento de alto volumen",
+        },
+        {
+          nombre: "Microscopio binocular",
+          imagen: "/h-e/materiales/microscopio-h-e.jpg",
+          descripcion: "Con objetivos planacromáticos 4x-100x",
+        },
+      ],
+      procedimiento: {
+        texto: [
+          "Desparafinar cortes en horno a 60°C por 15 minutos",
+          "Hidratar progresivamente en xilol y alcoholes decrecientes",
+          "Teñir con hematoxilina de Harris por 5-8 minutos",
+          "Lavar en agua corriente por 1 minuto",
+          "Diferenciar en HCl/alcohol 1% por 5-10 segundos",
+          "Azular en agua corriente o solución de Scott (5 min)",
+          "Contratinción con eosina Y por 1-2 minutos",
+          "Deshidratar en alcoholes crecientes (70°, 96°, absoluto)",
+          "Aclarar en xilol (2 cambios de 3 minutos)",
+          "Montar con resina sintética y cubreobjetos",
+        ],
+        imagenes: [
+          "/h-e/procedimiento/hematoxilina-harris.jpeg",
+          "/h-e/procedimiento/hidratacion.jpg",
+          "/h-e/procedimiento/tincion-hematoxilina.jpg",
+          "/h-e/procedimiento/lavado-agua.png",
+          "/h-e/procedimiento/diferenciacion.jpeg",
+          "/h-e/procedimiento/azulizacion.jpg",
+          "/h-e/procedimiento/tincion-eosina.webp",
+          "/h-e/procedimiento/deshidratacion.jpg",
+          "/h-e/procedimiento/aclarado-xilol.jpeg",
+          "/h-e/procedimiento/montaje-laminas.jpg",
+        ],
+      },
+      interpretacion: {
+        texto: `CRITERIOS DE CALIDAD EN TINCIÓN H&E
+
+PARÁMETROS ÓPTIMOS:
+1. Núcleos:
+   - Coloración: Azul violáceo intenso
+   - Cromatina: Patrón bien definido
+   - Membrana nuclear: Nítidamente delimitada
+
+2. Citoplasmas:
+   - Coloración: Rosa pálido a intenso según tipo celular
+   - Estructuras intracelulares: Diferenciables (gránulos, vacuolas)
+
+3. Matriz extracelular:
+   - Colágeno: Rosa homogéneo
+   - Fibras elásticas: Levemente eosinófilas
+   - Músculo: Eosinofilia intermedia
+
+INDICADORES DE MALA CALIDAD:
+• Núcleos pálidos (subteñidos)
+• Citoplasmas azulados (sobreteñidos)
+• Precipitados de colorante
+• Falta de diferenciación nuclear
+
+AJUSTES RECOMENDADOS:
+- Núcleos pálidos: Aumentar tiempo hematoxilina
+- Fondo eosinófilo excesivo: Reducir tiempo eosina
+- Precipitados: Filtrar soluciones regularmente`,
+        imagen: "/h-e/interpretacion-h-e.jpeg",
+        alt: "Comparación de tinción H&E óptima vs subóptima",
+      },
+      erroresComunes: {
+        texto: `SOLUCIÓN DE PROBLEMAS EN TINCIÓN H&E
+
+PROBLEMAS FRECUENTES:
+1. Núcleos demasiado pálidos:
+   - Causa: Hematoxilina agotada o sobre-diferenciación
+   - Solución: Reemplazar reactivo o reducir tiempo HCl
+
+2. Fondo eosinófilo excesivo:
+   - Causa: Eosina muy concentrada o tiempo prolongado
+   - Solución: Diluir eosina o reducir a 45 segundos
+
+3. Precipitados en láminas:
+   - Causa: Soluciones contaminadas o mal filtradas
+   - Solución: Filtrar diariamente y limpiar baños
+
+4. Tejido desprendido:
+   - Causa: Adhesión insuficiente al portaobjetos
+   - Solución: Usar portaobjetos cargados positivamente
+
+CONTROLES DE CALIDAD:
+• Tejido control incluido en cada lote
+• Monitoreo diario de pH de soluciones
+• Registro de cambios de reactivos
+• Evaluación microscópica sistemática`,
+        imagen: "/h-e/errores-h-e.jpg",
+        alt: "Ejemplos de artefactos comunes en tinción H&E",
+      },
     },
   },
   "perfiles-bioquimicos": {
@@ -1001,24 +1395,24 @@ Factores preanalíticos críticos:
           descripcion: "1500-2000g por 10 minutos",
         },
       ],
-procedimiento: {
-  texto: [
-    "Ayuno de 9-12 horas, evitar ejercicio 24h antes y extraer sangre en tubo seco o con gel separador",
-    "Reconstituir reactivos, preparar estándar y controles, y equilibrar a temperatura ambiente",
-    "Centrifugar muestra a 2000g por 10 minutos, pipetear 1000μL reactivo y 10μL de suero/estándar/control en cubeta",
-    "Mezclar suavemente e incubar 10 minutos a 37°C",
-    "Leer la absorbancia a 500-510 nm contra blanco",
-    "Aplicar fórmula, validar con controles (CV <3%) y considerar diluciones para muestras lipémicas o valores >1000 mg/dL"
-  ],
-  imagenes: [
-    "/dosaje-trigliceridos/procedimiento/preparacion-muestra.jpeg",         // Preparación y extracción
-    "/dosaje-trigliceridos/procedimiento/pipeteo-reactivos.jpg",          // Pipeteo y reactivo
-    "/dosaje-trigliceridos/procedimiento/usando-centrifuga.avif",         // Incubación
-    "/dosaje-trigliceridos/procedimiento/incubando.jpg",        // Lectura absorbancia
-    "/dosaje-trigliceridos/procedimiento/leer-absorvence.avif",       // Cálculo y validación
-    "/dosaje-glucosa/procedimiento/control-calidad.jpeg"           // Imagen adicional opcional para consideraciones especiales
-  ]
-},
+      procedimiento: {
+        texto: [
+          "Ayuno de 9-12 horas, evitar ejercicio 24h antes y extraer sangre en tubo seco o con gel separador",
+          "Reconstituir reactivos, preparar estándar y controles, y equilibrar a temperatura ambiente",
+          "Centrifugar muestra a 2000g por 10 minutos, pipetear 1000μL reactivo y 10μL de suero/estándar/control en cubeta",
+          "Mezclar suavemente e incubar 10 minutos a 37°C",
+          "Leer la absorbancia a 500-510 nm contra blanco",
+          "Aplicar fórmula, validar con controles (CV <3%) y considerar diluciones para muestras lipémicas o valores >1000 mg/dL",
+        ],
+        imagenes: [
+          "/dosaje-trigliceridos/procedimiento/preparacion-muestra.jpeg", // Preparación y extracción
+          "/dosaje-trigliceridos/procedimiento/pipeteo-reactivos.jpg", // Pipeteo y reactivo
+          "/dosaje-trigliceridos/procedimiento/usando-centrifuga.avif", // Incubación
+          "/dosaje-trigliceridos/procedimiento/incubando.jpg", // Lectura absorbancia
+          "/dosaje-trigliceridos/procedimiento/leer-absorvence.avif", // Cálculo y validación
+          "/dosaje-glucosa/procedimiento/control-calidad.jpeg", // Imagen adicional opcional para consideraciones especiales
+        ],
+      },
       interpretacion: {
         texto: `INTERPRETACIÓN DE RESULTADOS - TRIGLICÉRIDOS (NCEP-ATP III)
 

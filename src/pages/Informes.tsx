@@ -192,7 +192,7 @@ const Informes = () => {
         descripcion: "Técnica de tinción para identificación de bacilos ácido-alcohol resistentes",
         fecha: "2024-01-22",
         estudiante: "Carlos Rodríguez",
-        estado: "En revisión",
+        estado: "Completado",
         tipo: "Tinción"
       },
       {
@@ -208,8 +208,8 @@ const Informes = () => {
     "anatomia-patologica": [
       {
         id: 1,
-        titulo: "Biopsia de Piel - Carcinoma Basocelular",
-        descripcion: "Análisis histopatológico de lesión cutánea pigmentada",
+        titulo: "Examen Microscopico de celulas",
+        descripcion: "Análisis histopatológico de células (muestra: orina y esputo)",
         fecha: "2024-01-18",
         estudiante: "Roberto Silva",
         estado: "Completado",
@@ -221,9 +221,18 @@ const Informes = () => {
         descripcion: "Detección de células atípicas y displasia cervical",
         fecha: "2024-01-25",
         estudiante: "Patricia Ruiz",
-        estado: "En revisión",
+        estado: "Completado",
         tipo: "Citología"
-      }
+      },
+{
+  id: 3,
+  titulo: "Hematoxilina y Eosina - Tinción Histológica Básica",
+  descripcion: "Técnica de tinción estándar para visualización de estructuras celulares y tisulares en muestras histopatológicas",
+  fecha: "2024-01-25",
+  estudiante: "Patricia Ruiz",
+  estado: "Completado",
+  tipo: "Histología"
+}
     ],
     "perfiles-bioquimicos": [
       {
@@ -241,7 +250,7 @@ const Informes = () => {
         descripcion: "Evaluación de la respuesta glicémica postprandial para diagnóstico de diabetes",
         fecha: "2024-01-25",
         estudiante: "Roberto Silva",
-        estado: "En revisión",
+        estado: "Completado",
         tipo: "Tolerancia"
       },
       {
