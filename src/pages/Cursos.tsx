@@ -467,7 +467,7 @@ useEffect(() => {
 
         {/* Courses Grid */}
         <CoursesGrid ref={coursesRef}>
-          {cursos.map((curso, index) => (
+          {cursos.map((curso) => (
             <CourseCard
               key={curso.id}
               $color={curso.color}

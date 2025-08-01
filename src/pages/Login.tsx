@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -118,28 +118,6 @@ const PasswordToggle = styled(Button)`
   }
 `;
 
-const RememberSection = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const RememberGroup = styled.div`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const ForgotLink = styled(Link)`
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  color: ${({ theme }) => theme.colors.primary[500]};
-  text-decoration: none;
-  transition: color ${({ theme }) => theme.transitions.fast};
-  
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary[700]};
-  }
-`;
 
 const SubmitButton = styled(Button)`
   width: 100%;
@@ -168,27 +146,7 @@ const LinkText = styled.p`
   color: ${({ theme }) => theme.colors.gray[600]};
 `;
 
-const SignupLink = styled(Link)`
-  color: ${({ theme }) => theme.colors.primary[500]};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
-  text-decoration: none;
-  transition: color ${({ theme }) => theme.transitions.fast};
-  
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary[700]};
-  }
-`;
 
-const BackLink = styled(Link)`
-  font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  color: ${({ theme }) => theme.colors.gray[600]};
-  text-decoration: none;
-  transition: color ${({ theme }) => theme.transitions.fast};
-  
-  &:hover {
-    color: ${({ theme }) => theme.colors.gray[900]};
-  }
-`;
 const Login = () => {
   const [email, setEmail] = useState("admin");
   const [password, setPassword] = useState("admin");

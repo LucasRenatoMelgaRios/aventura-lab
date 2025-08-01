@@ -3,7 +3,6 @@ import styled from "styled-components";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -22,10 +21,9 @@ import {
   TestTube,
   Activity,
 } from "lucide-react";
-import type { ReactNode } from "react";
 
 import { informesData } from "@/data/informes";
-import type {  CursoInfo, Informe, ImagenSeccion, Material, Procedimiento } from "@/data/informes";
+import type {  CursoInfo, ImagenSeccion, Material, Procedimiento } from "@/data/informes";
 
 
 // Componentes estilizados
@@ -268,13 +266,6 @@ const InformeDetalle = () => {
   ): string => {
     if (!content) return "";
     return typeof content === "string" ? content : content.texto;
-  };
-
-  const getImageContent = (
-    content: string | ImagenSeccion | undefined
-  ): { imagen?: string; alt?: string } => {
-    if (!content || typeof content === "string") return {};
-    return { imagen: content.imagen, alt: content.alt };
   };
 
   if (!curso || !informe) {
