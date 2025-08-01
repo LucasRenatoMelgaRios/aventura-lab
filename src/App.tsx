@@ -1,6 +1,6 @@
 // src/App.tsx
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom"; // Cambiamos BrowserRouter por HashRouter
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Cursos from "./pages/Cursos";
@@ -15,24 +15,24 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
+    <HashRouter> {/* Cambiado a HashRouter */}
       <AuthProvider>
-          <Toaster />
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Landing />} />
-            
-            {/* Rutas protegidas */}
-            <Route element={<ProtectedRoute />}>
-              <Route path="/cursos" element={<Cursos />} />
-              <Route path="/informes/:cursoId" element={<Informes />} />
-              <Route path="/informe/:cursoId/:informeId" element={<InformeDetalle />} />
-            </Route>
-            
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+        <Toaster />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Landing />} />
+          
+          {/* Rutas protegidas */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/cursos" element={<Cursos />} />
+            <Route path="/informes/:cursoId" element={<Informes />} />
+            <Route path="/informe/:cursoId/:informeId" element={<InformeDetalle />} />
+          </Route>
+          
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   </QueryClientProvider>
 );
 
