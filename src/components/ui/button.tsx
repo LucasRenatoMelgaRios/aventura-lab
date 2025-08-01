@@ -38,11 +38,15 @@ const getVariantStyles = (variant: ButtonVariant) => {
       return css`
         border: 1px solid ${({ theme }) => theme.colors.gray[300]};
         background-color: transparent;
-        color: ${({ theme }) => theme.colors.gray[900]};
         
         &:hover:not(:disabled) {
           background-color: ${({ theme }) => theme.colors.gray[50]};
-          border-color: ${({ theme }) => theme.colors.primary[400]};
+          border-color: ${({ theme }) => theme.colors.text.light};
+        }
+
+        &:hover{
+           color: ${({ theme }) => theme.colors.primary[500]};
+
         }
       `;
     case 'secondary':

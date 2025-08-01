@@ -1,6 +1,10 @@
 export const theme = {
   colors: {
     // Primary colors (púrpura médico)
+    buttonLanding: {
+      50: "#ffff"
+    },
+
     primary: {
       50: '#f3f0ff',
       100: '#e9e2ff',

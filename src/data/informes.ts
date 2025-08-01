@@ -1142,13 +1142,13 @@ RECOMENDACIONES:
       introduccion: {
         texto:
           "La Prueba de Tolerancia Oral a la Glucosa (PTOG) es el estándar de oro para diagnosticar diabetes mellitus gestacional y alteraciones tempranas del metabolismo glucídico. Esta prueba evalúa la capacidad del organismo para metabolizar una carga controlada de glucosa, simulando la respuesta posprandial. Requiere una preparación estricta del paciente (dieta previa de 3 días con ≥150g de carbohidratos y ayuno de 8-12 horas) y sigue protocolos estandarizados por la ADA y la OMS. La PTOG es especialmente útil para detectar resistencia a la insulina en etapas subclínicas, cuando la glucemia en ayunas aún es normal pero existen alteraciones en la curva de tolerancia.",
-        imagen: "ptog-intro.jpg",
+        imagen: "/oral-glucosa/glucosa-intro.png",
         alt: "Paciente realizando prueba de tolerancia a glucosa",
       },
       objetivoGeneral: {
         texto:
           "Evaluar la respuesta metabólica a una sobrecarga oral de glucosa mediante determinaciones seriadas de glucemia, siguiendo protocolos internacionales estandarizados.",
-        imagen: "ptog-objetivo.webp",
+        imagen: "/oral-glucosa/glucosa-objetivo.jpg",
         alt: "Materiales para prueba de tolerancia a glucosa",
       },
       objetivosEspecificos: [
@@ -1164,83 +1164,58 @@ RECOMENDACIONES:
 El protocolo estándar de 75g de glucosa (equivalente a una comida rica en carbohidratos) permite valorar: 1) La fase temprana de secreción insulínica (respuesta a los 30-60 min), 2) La eficiencia de clearance glucémico (diferencia entre pico y valor a 2h), y 3) La recuperación a niveles basales. La prueba mide no solo la función de las células β pancreáticas, sino también la sensibilidad hepática y periférica a la insulina, así como la función incretina (GLP-1, GIP).
 
 La interpretación debe considerar factores como la actividad física previa, medicamentos que afectan el metabolismo glucídico (corticoides, β-bloqueadores), y condiciones que alteran la absorción intestinal (gastroparesia, cirugías bariátricas). La variabilidad intraindividual es de aproximadamente 15%, por lo que resultados limítrofes deben confirmarse con repetición de la prueba o evaluación de HbA1c.`,
-        imagen: "ptog-fundamento.jpg",
+        imagen: "oral-glucosa/glucosa-fundamento.png",
         alt: "Curvas comparativas de tolerancia a glucosa en estados normales y patológicos",
       },
       materiales: [
         {
           nombre: "Solución de glucosa",
-          imagen: "/materiales/glucosa-75g.jpg",
+          imagen: "/oral-glucosa/materiales/solucion-glucosa-comercial.png",
           descripcion:
             "75g de glucosa anhidra en 250-300ml de agua (comercial o preparada)",
         },
         {
           nombre: "Tubos con inhibidor",
-          imagen: "/materiales/tubos-fluoruro.jpg",
+          imagen: "/oral-glucosa/materiales/tubos-fluoruro-inhibidor.webp",
           descripcion:
             "Conteniendo fluoruro de sodio (inhibidor de glucólisis)",
         },
         {
           nombre: "Glucómetro/analizador",
-          imagen: "/materiales/analizador-glucemia.jpg",
+          imagen: "/oral-glucosa/materiales/analizador-glucemia.webp",
           descripcion: "Precisión certificada (±5% CV)",
         },
         {
           nombre: "Cronómetro",
-          imagen: "/materiales/cronometro-medico.webp",
+          imagen: "/oral-glucosa/materiales/cronometro-medico.webp",
           descripcion: "Para tiempos exactos de toma de muestras",
         },
         {
           nombre: "Balanza digital",
-          imagen: "/materiales/balanza-digital.jpg",
+          imagen: "/oral-glucosa/materiales/balanza-digital.jpg",
           descripcion: "Para ajustar dosis en pacientes pediátricos (1.75g/kg)",
         },
         {
           nombre: "Material de venopunción",
-          imagen: "/materiales/kit-flebotomia.webp",
+          imagen: "/oral-glucosa/materiales/kit-flebotomia.webp",
           descripcion: "Jeringas, agujas, torniquete, algodón",
-        },
-        {
-          nombre: "Formulario de registro",
-          imagen: "/materiales/formulario-ptog.jpg",
-          descripcion: "Documentación completa de tiempos y síntomas",
         },
       ],
       procedimiento: {
-        texto: [
-          "Preparación previa (3 días antes):",
-          "1. Dieta con ≥150g de carbohidratos/día",
-          "2. Suspender medicamentos que interfieran (bajo supervisión médica)",
-          "3. Ayuno de 8-12 horas (solo agua permitida)",
-
-          "Día de la prueba:",
-          "4. Confirmar ayuno (glucemia basal <126 mg/dL)",
-          "5. Obtener muestra basal (tiempo 0)",
-          "6. Administrar solución de 75g glucosa en ≤5 minutos",
-          "7. Cronometrar desde el primer sorbo",
-
-          "Tomas seriadas:",
-          "8. Extraer muestras a los 60, 120 y opcionalmente 180 minutos",
-          "9. Mantener paciente en reposo, sin fumar/comer durante la prueba",
-          "10. Registrar síntomas (náuseas, mareos, sudoración)",
-
-          "Procesamiento:",
-          "11. Centrifugar muestras dentro de los 30 minutos",
-          "12. Determinar glucemia por método enzimático",
-          "13. Construir curva glucémica con los valores obtenidos",
-
-          "Criterios de interrupción:",
-          "• Glucemia basal ≥126 mg/dL (suspender prueba)",
-          "• Glucemia a 2h ≥200 mg/dL (diagnóstico de diabetes)",
-          "• Síntomas severos de hipoglucemia",
-        ],
-        imagenes: [
-          "/tincion-ziehl-neelsen/procedimiento/ziehl-preparacion.webp",
-          "/procedimiento/administracion-glucosa.jpg",
-          "/procedimiento/toma-muestras-seriadas.webp",
-          "/procedimiento/curva-glucemica.jpg",
-          "/procedimiento/interpretacion-ptog.webp",
-        ],
+texto: [
+  "Preparación previa: dieta rica en carbohidratos, ayuno de 8-12 h y suspensión de fármacos si es necesario",
+  "Confirmar ayuno, obtener muestra basal y administrar 75g de glucosa en ≤5 minutos",
+  "Tomar muestras a los 60, 120 (y opcionalmente 180) minutos; paciente en reposo sin ingerir alimentos",
+  "Procesar muestras rápidamente y determinar glucemia con método enzimático",
+  "Interpretar resultados y construir la curva glucémica; suspender si hay criterios de diabetes o hipoglucemia",
+],
+imagenes: [
+  "/oral-glucosa/procedimiento/preparacion-previa.webp",              // Dieta, ayuno y suspensión de fármacos
+  "/oral-glucosa/procedimiento/muestra-basal-glucosa.webp",           // Muestra basal y administración de glucosa
+  "/oral-glucosa/procedimiento/muestras-seriadas-reposo.webp",        // Toma de muestras a tiempo controlado
+  "/oral-glucosa/procedimiento/centrifugacion-determinacion.jpg",    // Centrifugación y determinación de glucemia
+  "/oral-glucosa/procedimiento/interpretacion-curva.png",            // Interpretación y construcción de curva glucémica
+],
       },
       interpretacion: {
         texto: `INTERPRETACIÓN DE RESULTADOS - PTOG (CRITERIOS ADA 2023)
@@ -1278,7 +1253,7 @@ PATRONES ANORMALES:
 3. Curva diabética:
    - No retorno a basal a las 2h
    - Diagnóstico de diabetes mellitus`,
-        imagen: "ptog-resultados.jpg",
+        imagen: "/oral-glucosa/ptog-resultados.jpg",
         alt: "Tabla comparativa de criterios diagnósticos ADA/OMS",
       },
       erroresComunes: {
@@ -1306,7 +1281,7 @@ CONTROLES RECOMENDADOS:
 • Solución glucosada: pH 4-7, osmolaridad 300-500 mOsm/L
 • Monitorear síntomas durante la prueba
 • Documentar hora exacta de cada toma`,
-        imagen: "ptog-errores.avif",
+        imagen: "/oral-glucosa/ptog-errores.png",
         alt: "Ejemplos de curvas glucémicas anómalas",
       },
     },

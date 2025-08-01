@@ -388,7 +388,7 @@ const InformeDetalle = () => {
 
                 <Separator />
 
-                <Button style={{ width: "100%" }} size="sm">
+                <Button style={{ width: "100%" }} size="sm" disabled>
                   <Download
                     className="h-4 w-4"
                     style={{ marginRight: "0.5rem" }}

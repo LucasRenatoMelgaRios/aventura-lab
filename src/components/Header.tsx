@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, FlaskConical, User, LogOut } from "lucide-react";
+import { Menu, X, FlaskConical, LogOut } from "lucide-react";
 import styled from "styled-components";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
-// Styled Components
+// Styled Components (mantenemos solo los necesarios)
 const HeaderContainer = styled.header`
   background-color: ${({ theme }) => `${theme.colors.background}95`};
   backdrop-filter: blur(8px);
@@ -60,12 +63,6 @@ const LogoTitle = styled.h1`
   margin: 0;
 `;
 
-const LogoSubtitle = styled.p`
-  font-size: ${({ theme }) => theme.typography.fontSize.xs};
-  color: ${({ theme }) => theme.colors.gray[600]};
-  margin: 0;
-`;
-
 const DesktopNav = styled.nav`
   display: none;
   gap: ${({ theme }) => theme.spacing.xl};
@@ -89,16 +86,6 @@ const NavLink = styled(Link)<{ $isActive: boolean }>`
   }
 `;
 
-const DesktopUserMenu = styled.div`
-  display: none;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.md};
-  
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: flex;
-  }
-`;
-
 const MobileMenuButton = styled.div`
   display: block;
   
@@ -116,7 +103,7 @@ const MobileMenu = styled.div<{ $isOpen: boolean }>`
 `;
 
 const MobileMenuContent = styled.div`
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.sm};
+  padding: ${({ theme }) => theme.spacing.sm};
   margin-top: ${({ theme }) => theme.spacing.sm};
   background-color: ${({ theme }) => theme.colors.background};
   border: 1px solid ${({ theme }) => theme.colors.gray[200]};
@@ -126,7 +113,7 @@ const MobileMenuContent = styled.div`
 
 const MobileNavLink = styled(Link)<{ $isActive: boolean }>`
   display: block;
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.sm};
+  padding: ${({ theme }) => theme.spacing.sm};
   border-radius: ${({ theme }) => theme.borderRadius.md};
   font-size: ${({ theme }) => theme.typography.fontSize.base};
   font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
@@ -143,31 +130,41 @@ const MobileNavLink = styled(Link)<{ $isActive: boolean }>`
 
 const MobileDivider = styled.div`
   border-top: 1px solid ${({ theme }) => theme.colors.gray[200]};
-  padding-top: ${({ theme }) => theme.spacing.md};
-  padding-bottom: ${({ theme }) => theme.spacing.sm};
-  margin-top: ${({ theme }) => theme.spacing.md};
-`;
-
-const MobileButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.sm};
-  padding: 0 ${({ theme }) => theme.spacing.sm};
+  margin: ${({ theme }) => theme.spacing.sm} 0;
 `;
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { logout } = useAuth();
+  const navigate = useNavigate();
 
+  // Solo mostramos la opción de Cursos
   const navigation = [
-    { name: "Inicio", href: "/" },
     { name: "Cursos", href: "/cursos" },
-    { name: "Informes", href: "/informes" },
   ];
 
   const isActive = (path: string) => {
     return location.pathname === path;
+  };
+
+  const handleLogout = () => {
+    toast.promise(
+      new Promise((resolve) => {
+        setTimeout(() => {
+          logout();
+          resolve(true);
+        }, 500);
+      }),
+      {
+        loading: 'Cerrando sesión...',
+        success: () => {
+          navigate('/login');
+          return 'Sesión cerrada correctamente';
+        },
+        error: 'Error al cerrar sesión',
+      }
+    );
   };
 
   return (
@@ -181,7 +178,6 @@ const Header = () => {
             </LogoIcon>
             <LogoText>
               <LogoTitle>Aventura Lab</LogoTitle>
-              <LogoSubtitle>Laboratorio Clínico</LogoSubtitle>
             </LogoText>
           </LogoSection>
 
@@ -196,19 +192,15 @@ const Header = () => {
                 {item.name}
               </NavLink>
             ))}
-          </DesktopNav>
-
-          {/* Desktop User Menu */}
-          <DesktopUserMenu>
-            <Button variant="ghost" size="sm">
-              <User size={16} style={{ marginRight: '0.5rem' }} />
-              Perfil
-            </Button>
-            <Button variant="outline" size="sm">
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={handleLogout}
+            >
               <LogOut size={16} style={{ marginRight: '0.5rem' }} />
-              Salir
+              Cerrar sesión
             </Button>
-          </DesktopUserMenu>
+          </DesktopNav>
 
           {/* Mobile menu button */}
           <MobileMenuButton>
@@ -217,11 +209,7 @@ const Header = () => {
               size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? (
-                <X size={24} />
-              ) : (
-                <Menu size={24} />
-              )}
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>
           </MobileMenuButton>
         </HeaderInner>
@@ -239,18 +227,16 @@ const Header = () => {
                 {item.name}
               </MobileNavLink>
             ))}
-            <MobileDivider>
-              <MobileButtonContainer>
-                <Button variant="ghost" size="sm" style={{ width: '100%', justifyContent: 'flex-start' }}>
-                  <User size={16} style={{ marginRight: '0.5rem' }} />
-                  Perfil
-                </Button>
-                <Button variant="outline" size="sm" style={{ width: '100%', justifyContent: 'flex-start' }}>
-                  <LogOut size={16} style={{ marginRight: '0.5rem' }} />
-                  Salir
-                </Button>
-              </MobileButtonContainer>
-            </MobileDivider>
+            <MobileDivider />
+            <Button 
+              variant="outline" 
+              size="sm" 
+              style={{ width: '100%', justifyContent: 'flex-start' }}
+              onClick={handleLogout}
+            >
+              <LogOut size={16} style={{ marginRight: '0.5rem' }} />
+              Cerrar sesión
+            </Button>
           </MobileMenuContent>
         </MobileMenu>
       </HeaderContent>

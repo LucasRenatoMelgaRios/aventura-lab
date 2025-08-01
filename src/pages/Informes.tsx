@@ -393,7 +393,7 @@ const Informes = () => {
                         Ver
                       </Button>
                     </Link>
-                    <Button size="sm" variant="outline">
+                    <Button size="sm" variant="outline" disabled>
                       <Download size={16} style={{ marginRight: '0.5rem' }} />
                       Descargar
                     </Button>

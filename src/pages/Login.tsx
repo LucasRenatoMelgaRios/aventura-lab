@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { FlaskConical, Eye, EyeOff, Lock, Mail } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 import styled from "styled-components";
+import { useAuth } from '../context/AuthContext';
+import toast from "react-hot-toast";
 
 // Styled Components
 const PageContainer = styled.div`
@@ -188,36 +189,57 @@ const BackLink = styled(Link)`
     color: ${({ theme }) => theme.colors.gray[900]};
   }
 `;
-
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin");
+  const [password, setPassword] = useState("admin");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { toast } = useToast();
+  const { login } = useAuth();
 
+
+  useEffect(() => {
+  // Redirigir a cursos si ya está autenticado
+  const session = localStorage.getItem('session');
+  if (session) {
+    navigate('/cursos');
+  }
+}, [navigate]);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulación de autenticación
-    setTimeout(() => {
-      if (email && password) {
-        toast({
-          title: "Inicio de sesión exitoso",
-          description: "Bienvenido a LabReports",
-        });
-        navigate("/cursos");
-      } else {
-        toast({
-          title: "Error de autenticación",
-          description: "Por favor, complete todos los campos",
-          variant: "destructive",
-        });
+    toast.promise(
+      (async () => {
+        const success = await login(email, password);
+        if (!success) {
+          throw new Error("Credenciales incorrectas");
+        }
+        
+        // Guardar información adicional en localStorage si es necesario
+        localStorage.setItem('session', JSON.stringify({
+          user: email,
+          timestamp: new Date().getTime()
+        }));
+        
+        return success;
+      })(),
+      {
+        loading: 'Verificando credenciales...',
+        success: () => {
+          setTimeout(() => navigate("/cursos"), 500);
+          return '¡Bienvenido! Redirigiendo...';
+        },
+        error: (err) => err.message || 'Error al iniciar sesión',
+      },
+      {
+        position: 'top-center',
+        style: {
+          minWidth: '250px',
+          border: '1px solid hsl(var(--border))',
+        },
       }
-      setIsLoading(false);
-    }, 1500);
+    ).finally(() => setIsLoading(false));
   };
 
   return (
@@ -244,15 +266,15 @@ const Login = () => {
             <FormContainer>
               <form onSubmit={handleSubmit}>
                 <FormField>
-                  <Label htmlFor="email">Correo Electrónico</Label>
+                  <Label htmlFor="email">Usuario</Label>
                   <InputGroup>
                     <InputIcon>
                       <Mail size={16} />
                     </InputIcon>
                     <StyledInput
                       id="email"
-                      type="email"
-                      placeholder="estudiante@laboratorio.com"
+                      type="text"
+                      placeholder="admin"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -269,7 +291,7 @@ const Login = () => {
                     <PasswordInput
                       id="password"
                       type={showPassword ? "text" : "password"}
-                      placeholder="••••••••"
+                      placeholder="admin"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
@@ -289,24 +311,6 @@ const Login = () => {
                   </InputGroup>
                 </FormField>
 
-                <FormField>
-                  <RememberSection>
-                    <RememberGroup>
-                      <input
-                        id="remember"
-                        type="checkbox"
-                        style={{ width: '1rem', height: '1rem' }}
-                      />
-                      <Label htmlFor="remember" style={{ fontSize: '0.875rem', color: 'var(--muted-foreground)' }}>
-                        Recordarme
-                      </Label>
-                    </RememberGroup>
-                    <ForgotLink to="/forgot-password">
-                      ¿Olvidaste tu contraseña?
-                    </ForgotLink>
-                  </RememberSection>
-                </FormField>
-
                 <SubmitButton
                   type="submit"
                   disabled={isLoading}
@@ -317,17 +321,8 @@ const Login = () => {
 
               <LinkSection>
                 <LinkText>
-                  ¿No tienes una cuenta?{" "}
-                  <SignupLink to="/register">
-                    Regístrate aquí
-                  </SignupLink>
+                  Usuario: admin | Contraseña: admin
                 </LinkText>
-              </LinkSection>
-
-              <LinkSection style={{ marginTop: '1.5rem' }}>
-                <BackLink to="/">
-                  ← Volver al inicio
-                </BackLink>
               </LinkSection>
             </FormContainer>
           </CardContent>

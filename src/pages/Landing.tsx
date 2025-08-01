@@ -170,8 +170,7 @@ const Landing = () => {
           
           <Description>
             Descubre el fascinante mundo del laboratorio clínico a través de una experiencia 
-            interactiva única. Explora cursos especializados, analiza casos reales y desarrolla 
-            competencias profesionales de manera intuitiva y emocionante.
+            interactiva única. 
           </Description>
           
           <ButtonGroup>
@@ -182,7 +181,7 @@ const Landing = () => {
               </Button>
             </Link>
             <Link to="/cursos">
-              <Button size="lg" variant="outline" style={{ border: '2px solid white', color: 'white', fontSize: '1.125rem', padding: '1rem 2rem' }}>
+              <Button size="lg" variant="outline" style={{ border: '2px solid white', color: "#ffff", fontSize: '1.125rem', padding: '1rem 2rem' }}>
                 Explorar Cursos
               </Button>
             </Link>
@@ -205,7 +204,7 @@ const Landing = () => {
             {
               icon: <Users size={32} />,
               title: "Aprendizaje Social",
-              description: "Colabora con otros estudiantes"
+              description: "Aprende con amigos y comparte conocimientos"
             },
             {
               icon: <TrendingUp size={32} />,
